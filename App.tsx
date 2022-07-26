@@ -4,14 +4,15 @@ import {
   Poppins_700Bold,
   useFonts,
 } from "@expo-google-fonts/poppins";
-import AppLoading from "expo-app-loading";
-import React from "react";
-import { ThemeProvider } from "styled-components";
-
 import { NavigationContainer } from "@react-navigation/native";
+import AppLoading from "expo-app-loading";
+import "intl";
+import "intl/locale-data/jsonp/pt-BR";
+import React from "react";
+import { StatusBar } from "react-native";
+import { ThemeProvider } from "styled-components";
 import theme from "./src/global/styles/theme";
 import { AppRoutes } from "./src/routes/app.routes";
-
 export default function App() {
   const [fonteLoading] = useFonts({
     Poppins_400Regular,
@@ -26,6 +27,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
+        <StatusBar barStyle="light-content" />
         <AppRoutes />
       </NavigationContainer>
     </ThemeProvider>
