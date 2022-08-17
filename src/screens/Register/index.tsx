@@ -10,7 +10,9 @@ import { Button } from "../../components/Form/Button";
 import { CategorySelectButton } from "../../components/Form/CategorySelectButton";
 import { InputForm } from "../../components/Form/InputForm";
 import { TransactionType } from "../../components/Form/TransactionType";
+import { useAuth } from "../../hooks/auth";
 import { CategorySelect } from "../CategorySelect";
+
 import {
   Container,
   ContainerTransaction,
@@ -38,9 +40,10 @@ const schema = Yup.object().shape({
 });
 
 export function Register() {
+  const { user } = useAuth();
   const [transactionType, setTransactionType] = useState("");
   const [categoryModalOpen, setCategoryModalOpem] = useState(false);
-  const dataKey = "@gofinance:transaction";
+  const dataKey = `@gofinance:transaction_user:${user.id}`;
   const { navigate } = useNavigation<Nav>();
   const [category, setCategory] = useState({
     key: "category",
